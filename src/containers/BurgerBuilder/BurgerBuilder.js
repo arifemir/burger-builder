@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import Fragment from "../../hoc/Fragment";
+import Burger from "../../components/Burger/Burger";
 
 class BurgerBuilder extends Component {
   render() {
     return (
       <Fragment>
-        <div>Burger</div>
+        <Burger/>
         <div>Build Controls</div>
       </Fragment>
     );
