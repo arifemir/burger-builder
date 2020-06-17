@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Bread from './Bread/Bread'
 import Meat from './Meat/Meat'
@@ -35,5 +36,9 @@ const BurgerIngrediend = (props) => {
 
   return ingrediend;
 };
+
+BurgerIngrediend.propTypes = {
+  type:PropTypes.string.isRequired
+}
 
 export default BurgerIngrediend;
