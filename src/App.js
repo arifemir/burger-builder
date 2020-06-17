@@ -1,11 +1,12 @@
 import React from 'react';
 import Fragment from "./hoc/Fragment";
 import Layout from "./components/Layout/Layout";
+import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
 function App() {
   return (
     <Fragment>
       <Layout>
-        <h1>Layout is working</h1>
+        <BurgerBuilder/>
       </Layout>
     </Fragment>
   );
