@@ -4,22 +4,19 @@ import BurgerIngredient from "./BurgerIngrediend/BurgerIngredient";
 import styles from './Burger.module.css'
 
 const Burger = (props) => {
-  const transformedIngredients = props.ingredients;
+  const ingredientValues = Object.values(props.ingredients);
+  const ingredientKeys = Object.keys(props.ingredients);
+  const showingIngredient = [];
+
+  ingredientKeys.map((ingredientKey,index) => {
+    for (let i = 0; i < ingredientValues[index]; i++)
+      showingIngredient.push(<BurgerIngredient key={ingredientKey+i} type={ingredientKey}/>)
+  })
+
   return (
     <div className={styles.Burger}>
       <BurgerIngredient type='bread-top'/>
-      {
-        transformedIngredients.map((ingredient, index) => {
-          let showIngredients = []
-            ,ingredientValue = Object.values(ingredient)[0]
-            ,ingredientName = Object.keys(ingredient)[0];
-          console.log(ingredientName,ingredientValue)
-          for (let i = 0; i < ingredientValue; i++) {
-            showIngredients.push(<BurgerIngredient key={ingredientName + index + i} type={ingredientName}/>)
-          }
-          return showIngredients;
-        })
-      }
+      {showingIngredient}
       <BurgerIngredient type='bread-bottom'/>
     </div>
   )
