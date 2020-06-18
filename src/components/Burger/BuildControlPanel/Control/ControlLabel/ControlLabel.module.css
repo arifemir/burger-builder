@@ -1,0 +1,38 @@
+.ControlLabel {
+    font:inherit;
+    font-weight: bold;
+    width:33%;
+    text-align:center;
+}
+
+.salad {
+    background: linear-gradient(#497848, #457100);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bacon {
+    background: linear-gradient(#bf3813, #823b24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cheese {
+    background: linear-gradient(#f4d004, #d6bb22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.meat {
+    background: linear-gradient(#7f3608, #702e05);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (max-width:400px) {
+    .ControlLabel {
+        margin-bottom: 5px;
+        width: 100%;
+    }
+}
+
