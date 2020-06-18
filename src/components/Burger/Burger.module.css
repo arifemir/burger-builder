@@ -14,10 +14,11 @@
 
 @media (min-width:250px) and (min-height:300px) {
     .Burger {
-        width: 350px;
+        width: 250px;
         height: 300px;
     }
 }
+
 
 @media (min-width:500px) and (min-height:401px) {
     .Burger {
