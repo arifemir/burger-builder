@@ -4,7 +4,6 @@
     background: linear-gradient(#F08E4A, #e27b36);
     border-radius: 0 0 30px 30px;
     box-shadow: inset -15px 0 #c15711;
-    margin: 2% auto;
 }
 
 .BreadTop {
@@ -13,6 +12,5 @@
     background: linear-gradient(#bc581e, #e27b36);
     border-radius: 50% 50% 0 0;
     box-shadow: inset -15px 0 #c15711;
-    margin: 2% auto;
     position: relative;
 }
