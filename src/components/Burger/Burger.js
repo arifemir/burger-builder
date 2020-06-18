@@ -8,10 +8,12 @@ const Burger = (props) => {
   const ingredientKeys = Object.keys(props.ingredients);
   const showingIngredient = [];
 
-  ingredientKeys.map((ingredientKey,index) => {
+  ingredientKeys.forEach((ingredientKey,index) => {
     for (let i = 0; i < ingredientValues[index]; i++)
       showingIngredient.push(<BurgerIngredient key={ingredientKey+i} type={ingredientKey}/>)
   })
+
+  if(showingIngredient.length === 0) showingIngredient.push('Please start adding ingredients!');
 
   return (
     <div className={styles.Burger}>
