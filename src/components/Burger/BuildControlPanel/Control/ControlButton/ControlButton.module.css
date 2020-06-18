@@ -1,0 +1,44 @@
+.ControlButton {
+    display: block;
+    font:inherit;
+    padding: 5px;
+    margin: 0 5px;
+    cursor:pointer;
+    outline:none;
+    font-weight: bold;
+    border-radius: 5px;
+    width:33%;
+}
+
+.Less {
+    background-color: #bf3813;
+    color: rgba(246, 246, 0, 0.82);
+    border:1px solid #803c27;
+}
+
+.More {
+    background-color: rgba(212, 212, 17, 0.76);
+    color: #ff3400;
+    border:1px solid #803c27;
+}
+
+.Less:hover , .Less:focus {
+    background-color: #ff3600;
+}
+
+.More:hover , .More:focus {
+    background-color: rgba(255, 255, 0, 0.76);
+}
+
+@media (max-width:400px) {
+    .ControlButton {
+        margin:0 0 7px 0;
+        width:100%;
+    }
+}
+
+@media (min-width:800px){
+    .ControlButton {
+        width:250px;
+    }
+}
