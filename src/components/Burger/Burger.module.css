@@ -1,7 +1,7 @@
 .Burger {
-    width:70%;
+    width:40%;
     margin:auto;
-    height: 250px;
+    height: 55%;
     overflow: auto;
     text-align: center;
     font-weight: bold;
@@ -12,24 +12,15 @@
     margin: 1% auto;
 }
 
-@media (min-width:250px) and (min-height:300px) {
+@media (min-width:800px) and (min-height:990px) {
     .Burger {
-        width: 250px;
-        height: 300px;
+        height: 75%;
     }
 }
 
-
-@media (min-width:500px) and (min-height:401px) {
+@media (max-width:500px) {
     .Burger {
-        width: 450px;
-        height: 400px;
-    }
-}
-
-@media (min-width:1000px) and (min-height:700px) {
-    .Burger {
-        width: 700px;
-        height: 600px;
+        height: 55%;
+        width: 60%;
     }
 }

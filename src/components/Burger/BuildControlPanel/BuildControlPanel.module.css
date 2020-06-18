@@ -1,0 +1,41 @@
+.BuildControls {
+    width:100%;
+    background: rgba(184, 101, 6, 0.85);
+    display:flex;
+    flex-flow: column wrap;
+    align-items: center;
+    box-shadow: 0 2px 1px #ccc;
+    padding: 10px 0;
+    box-sizing: border-box;
+
+}
+@media (min-width:800px){
+    .BuildControls {
+        width:800px;
+        margin:0 auto;
+    }
+}
+
+@media (min-width:600px) and (min-height:550px){
+    .BuildControls {
+        font-size:22px;
+    }
+}
+
+@media (max-width:400px) {
+    .BuildControls {
+        flex-flow: row nowrap;
+        padding: 10px 10px;
+    }
+}
+
+@media (max-width:275px) {
+    .BuildControls {
+        position: relative;
+        flex-flow: row wrap;
+        padding: 10px 10px;
+        top:-100px;
+    }
+}
+
+
