@@ -7,7 +7,7 @@ import Cheese from './Cheese/Cheese'
 import Bacon from './Bacon/Bacon'
 import Salad from './Salad/Salad'
 
-const BurgerIngrediend = (props) => {
+const BurgerIngredient = (props) => {
   let ingrediend = null;
 
   switch (props.type) {
@@ -37,8 +37,8 @@ const BurgerIngrediend = (props) => {
   return ingrediend;
 };
 
-BurgerIngrediend.propTypes = {
+BurgerIngredient.propTypes = {
   type:PropTypes.string.isRequired
 }
 
-export default BurgerIngrediend;
+export default BurgerIngredient;
