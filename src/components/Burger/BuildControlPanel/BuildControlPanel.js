@@ -13,7 +13,12 @@ const BuildControlPanel = (props) => {
   return (
     <div className={styles.BuildControls}>
       {controls.map(ctrl => (
-        <Control key={ctrl.label} label={ctrl.label}/>
+        <Control
+          addIngredient={(type)=>props.addIngredient(type)}
+          removeIngredient={(type)=>props.removeIngredient(type)}
+          key={ctrl.label}
+          label={ctrl.label}
+        />
       ))}
     </div>
   );

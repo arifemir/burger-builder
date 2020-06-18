@@ -8,8 +8,15 @@ const Control = (props) => {
   return (
     <div className={styles.Control}>
       <ControlLabel label={props.label}/>
-      <ControlButton name='Less' />
-      <ControlButton name='More'/>
+      <ControlButton
+        label={props.label}
+        removeIngredient={(type)=>props.removeIngredient(type)}
+        name='Less' />
+      <ControlButton
+        label={props.label}
+        addIngredient={(type)=>props.addIngredient(type)}
+        name='More'
+      />
     </div>
   );
 };
