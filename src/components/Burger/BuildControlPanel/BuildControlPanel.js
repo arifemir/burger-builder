@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './BuildControlPanel.module.css'
 import Control from "./Control/Control";
+import Price from "./Price/Price";
 
 const controls = [
   {label:'salad',type:'salad'},
@@ -12,6 +13,7 @@ const controls = [
 const BuildControlPanel = (props) => {
   return (
     <div className={styles.BuildControls}>
+      <Price price={props.price}/>
       {controls.map(ctrl => (
         <Control
           addIngredient={()=>props.addIngredient(ctrl.type)}
