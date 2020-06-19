@@ -3,6 +3,13 @@ import Fragment from "../../hoc/Fragment";
 import Burger from "../../components/Burger/Burger";
 import BuildControlPanel from "../../components/Burger/BuildControlPanel/BuildControlPanel";
 
+const INGREDIENT_PRICES = {
+  salad: 1,
+  cheese: 1,
+  meat: 2,
+  bacon: 2
+}
+
 class BurgerBuilder extends Component {
   state = {
     ingredients: {
@@ -10,41 +17,36 @@ class BurgerBuilder extends Component {
       bacon: 1,
       cheese: 1,
       meat: 1
-    }
+    },
+    totalPrice:6
   }
 
   addIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients[type];
-    const updatedCount = oldCount + 1;
-    const updatedIngredients = {
-      ...this.state.ingredients
-    }
-    updatedIngredients[type] = updatedCount;
-    this.setState({ingredients: updatedIngredients});
+    const updatedIngredients = {...this.state.ingredients}
+    updatedIngredients[type] = (this.state.ingredients[type] + 1);
+    this.setState({ingredients: updatedIngredients, totalPrice: this.state.totalPrice + INGREDIENT_PRICES[type]});
+    console.log(this.state.totalPrice)
   }
 
   removeIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients[type];
-    if(oldCount > 0) {
-      const updatedCount = oldCount - 1;
-      const updatedIngredients = {
-        ...this.state.ingredients
+    if (this.state.ingredients[type] > 0) {
+      const updatedIngredients = {...this.state.ingredients}
+      updatedIngredients[type] = (this.state.ingredients[type] - 1);
+      console.log(this.state.totalPrice,INGREDIENT_PRICES[type])
+      if (this.state.totalPrice >= INGREDIENT_PRICES[type]) {
+        this.setState({ingredients: updatedIngredients, totalPrice: this.state.totalPrice - INGREDIENT_PRICES[type]});
       }
-      updatedIngredients[type] = updatedCount;
-      console.log(updatedIngredients)
-      this.setState({ingredients:updatedIngredients});
     }
-
   }
 
-  render() {
-
+  render()
+  {
     return (
       <Fragment>
         <Burger ingredients={this.state.ingredients}/>
         <BuildControlPanel
-          addIngredient={(type)=>this.addIngredientHandler(type)}
-          removeIngredient={(type)=>this.removeIngredientHandler(type)}
+          addIngredient={(type) => this.addIngredientHandler(type)}
+          removeIngredient={(type) => this.removeIngredientHandler(type)}
         />
       </Fragment>
     );
