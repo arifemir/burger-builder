@@ -4,21 +4,20 @@ import BurgerIngredient from "./BurgerIngrediend/BurgerIngredient";
 import styles from './Burger.module.css'
 
 const Burger = (props) => {
-  const ingredientValues = Object.values(props.ingredients);
-  const ingredientKeys = Object.keys(props.ingredients);
+  const ingredients = {...props.ingredients}
   const showingIngredient = [];
 
-  ingredientKeys.forEach((ingredientKey,index) => {
-    for (let i = 0; i < ingredientValues[index]; i++)
-      showingIngredient.push(<BurgerIngredient key={ingredientKey+i} type={ingredientKey}/>)
-  })
+  for(let key in ingredients){
+    for (let i = 0; i < ingredients[key]; i++){
+      showingIngredient.push(<BurgerIngredient key={key+i} type={key}/>)
+  }}
 
   if(showingIngredient.length === 0) showingIngredient.push('Please start adding ingredients!');
 
   return (
     <div className={styles.Burger}>
       <BurgerIngredient type='bread-top'/>
-      {showingIngredient}
+        {showingIngredient}
       <BurgerIngredient type='bread-bottom'/>
     </div>
   )
