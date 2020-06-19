@@ -10,6 +10,7 @@ const Control = (props) => {
       <ControlLabel label={props.label}/>
       <ControlButton
         click={props.removeIngredient}
+        disabledInfo={props.disabledInfo}
         name='Less'
       />
       <ControlButton

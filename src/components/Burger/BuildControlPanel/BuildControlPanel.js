@@ -18,6 +18,7 @@ const BuildControlPanel = (props) => {
           removeIngredient={()=>props.removeIngredient(ctrl.type)}
           key={ctrl.label}
           label={ctrl.label}
+          disabledInfo={props.disabledInfo[ctrl.type]}
         />
       ))}
     </div>
