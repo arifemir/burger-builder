@@ -36,3 +36,10 @@
     }
 }
 
+@media (min-width:800px) {
+    .ControlLabel {
+        font-size: 32px;
+        width:250px;
+        padding-right: 14px;
+    }
+}
