@@ -29,10 +29,10 @@
     background-color: rgba(255, 255, 0, 0.76);
 }
 
-.Disabled,.Disabled:hover, .Disabled:focus{
+.ControlButton:disabled {
     background-color: #5c544d;
     color:#000;
-    cursor: default;
+    cursor:default;
 }
 
 @media (max-width:400px) {

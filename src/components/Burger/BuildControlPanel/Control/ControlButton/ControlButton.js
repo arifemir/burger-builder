@@ -8,10 +8,10 @@ const ControlButton = (props) =>
       {
         cn(
           styles.ControlButton,
-          (props.name==='Less') ? styles.Less : styles.More,
-          (props.disabledInfo===true) && styles.Disabled
+          (props.name==='Less') ? styles.Less : styles.More
         )
       }
+    disabled={props.disabledInfo}
     onClick={props.click}
 
   >

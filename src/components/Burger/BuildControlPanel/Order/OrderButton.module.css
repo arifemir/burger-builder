@@ -1,0 +1,36 @@
+.OrderButton {
+    background-color: rgba(119, 234, 76, 0.75);
+    outline:none;
+    cursor:pointer;
+    border:1px solid #455e30;
+    color: rgba(0, 0, 0, 0.9);
+    font-family: inherit;
+    font-size:1.2em;
+    padding:15px 30px;
+    margin:0 auto;
+    font-weight: bolder;
+    border-radius:5px;
+}
+.OrderButton:hover , .OrderButton:focus{
+    background-color: rgba(52, 255, 32, 0.74);
+    color: rgb(36, 12, 12);
+}
+
+.OrderButton:disabled {
+    background-color: #5c544d;
+    color:#000;
+    cursor:default;
+}
+
+@keyframes enable {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+
+}

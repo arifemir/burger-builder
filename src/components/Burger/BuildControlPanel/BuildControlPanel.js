@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './BuildControlPanel.module.css'
+
 import Control from "./Control/Control";
 import Price from "./Price/Price";
+import OrderButton from "./Order/OrderButton";
 
 const controls = [
   {label:'salad',type:'salad'},
@@ -23,6 +25,10 @@ const BuildControlPanel = (props) => {
           disabledInfo={props.disabledInfo[ctrl.type]}
         />
       ))}
+      <OrderButton
+        content='ORDER NOW'
+        purchasable={props.purchasable}
+      />
     </div>
   );
 };
