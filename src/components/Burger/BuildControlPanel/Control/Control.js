@@ -9,12 +9,11 @@ const Control = (props) => {
     <div className={styles.Control}>
       <ControlLabel label={props.label}/>
       <ControlButton
-        label={props.label}
-        removeIngredient={(type)=>props.removeIngredient(type)}
-        name='Less' />
+        click={props.removeIngredient}
+        name='Less'
+      />
       <ControlButton
-        label={props.label}
-        addIngredient={(type)=>props.addIngredient(type)}
+        click={props.addIngredient}
         name='More'
       />
     </div>
