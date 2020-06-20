@@ -20,6 +20,7 @@ const OrderSummary = (props) => {
       <ol className={styles.List}>
         {ingredientSummary}
       </ol>
+      <p>Total Price:<strong> {props.price}$</strong></p>
       <OrderSummaryButton purchaseState={props.purchaseCanceled} >Cancel</OrderSummaryButton>
       <OrderSummaryButton purchaseState={props.purchaseContinue}>Continue</OrderSummaryButton>
     </Fragment>
