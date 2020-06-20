@@ -34,10 +34,7 @@ class BurgerBuilder extends Component {
   }
 
   purchaseHandler = () =>{
-    this.setState((prevState)=>{
-      return {purchasing:!prevState.purchasing}
-    })
-    this.orderButtonTextHandler()
+    this.setState({purchasing:true})
   }
 
   addIngredientHandler = (type) => {
@@ -57,13 +54,8 @@ class BurgerBuilder extends Component {
     }
   }
 
-  orderButtonTextHandler = () => {
-    (!this.state.purchasing)
-      ?
-        this.setState({orderButtonText:'CLOSE SUMMARY'})
-      :
-        this.setState({orderButtonText:'ORDER NOW'})
-
+  purchaseCancelHandler = () => {
+    this.setState({purchasing:false})
   }
 
   render()
@@ -78,7 +70,7 @@ class BurgerBuilder extends Component {
 
     return (
       <Fragment>
-        <Modal show={this.state.purchasing}>
+        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
           <OrderSummary ingredients={this.state.ingredients}/>
         </Modal>
         <Burger ingredients={this.state.ingredients}/>
