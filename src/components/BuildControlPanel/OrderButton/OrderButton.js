@@ -8,7 +8,9 @@ const OrderButton = (props) => {
       disabled={!props.purchasable}
       onClick={props.purchasing}
     >
-      {props.content}
+      {
+        props.orderButtonText
+      }
     </button>
   );
 };

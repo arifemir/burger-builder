@@ -23,7 +23,8 @@ class BurgerBuilder extends Component {
     },
     totalPrice:6,
     purchasable: true,
-    purchasing:false
+    purchasing:false,
+    orderButtonText:"ORDER NOW"
   }
 
   updatePurchaseState(updatedIngredients) {
@@ -36,6 +37,7 @@ class BurgerBuilder extends Component {
     this.setState((prevState)=>{
       return {purchasing:!prevState.purchasing}
     })
+    this.orderButtonTextHandler()
   }
 
   addIngredientHandler = (type) => {
@@ -53,6 +55,15 @@ class BurgerBuilder extends Component {
         this.setState({ingredients: updatedIngredients, totalPrice: this.state.totalPrice - INGREDIENT_PRICES[type]});
       this.updatePurchaseState(updatedIngredients)
     }
+  }
+
+  orderButtonTextHandler = () => {
+    (!this.state.purchasing)
+      ?
+        this.setState({orderButtonText:'CLOSE SUMMARY'})
+      :
+        this.setState({orderButtonText:'ORDER NOW'})
+
   }
 
   render()
@@ -78,6 +89,7 @@ class BurgerBuilder extends Component {
           price={this.state.totalPrice}
           purchasable={this.state.purchasable}
           purchasing={this.purchaseHandler}
+          orderButtonText={this.state.orderButtonText}
         />
       </Fragment>
     );
