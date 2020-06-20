@@ -1,0 +1,28 @@
+.SummaryBtn {
+    background: transparent;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    border:1px solid #cccccc;
+    border-radius:22px;
+    padding:10px;
+    cursor:pointer;
+    outline:none;
+    transition:all 0.5s ease-out;
+    transform:rotate(0deg);
+}
+.continue {
+    float:right;
+}
+
+.cancel {
+    float:left;
+}
+
+.SummaryBtn:hover {
+    background: rgba(165, 180, 241, 0.14);
+    transform:scale(1.2);
+}
+
+.SummaryBtn:focus {
+    transform:rotate(3600deg);
+}

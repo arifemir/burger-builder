@@ -46,6 +46,7 @@
     text-transform: capitalize;
     letter-spacing:0.7px;
 }
+
 .Key > div {
     display: inline-block;
     font-size:16px;
@@ -58,23 +59,3 @@
     color: #ffffff;
 }
 
-.ContinueBtn {
-    background: transparent;
-    color: rgb(255, 255, 255);
-    display: inline-block;
-    border:1px solid #cccccc;
-    border-radius:22px;
-    padding:10px;
-    cursor:pointer;
-    outline:none;
-    transition:all 0.5s ease-out;
-    transform:rotate(0deg);
-}
-
-.ContinueBtn:hover {
-    background: rgba(165, 180, 241, 0.14);
-    transform:rotate(10deg);
-}
-.ContinueBtn:focus {
-    transform:rotate(0deg);
-}
