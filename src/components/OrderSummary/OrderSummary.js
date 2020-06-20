@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Fragment from "../../../hoc/Fragment";
-import style from './OrderSummary.module.css'
+import Fragment from "../../hoc/Fragment";
+import styles from './OrderSummary.module.css'
 const OrderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients).map(ingredientKey =>
     <li key={ingredientKey}>
-      <span className={style.Key}>
+      <span className={styles.Key}>
         {ingredientKey}
       </span>:
       {props.ingredients[ingredientKey]}

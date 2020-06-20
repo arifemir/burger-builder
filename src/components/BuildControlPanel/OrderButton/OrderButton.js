@@ -6,6 +6,7 @@ const OrderButton = (props) => {
     <button
       className={styles.OrderButton}
       disabled={!props.purchasable}
+      onClick={props.purchasing}
     >
       {props.content}
     </button>

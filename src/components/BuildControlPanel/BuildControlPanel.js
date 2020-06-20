@@ -28,6 +28,7 @@ const BuildControlPanel = (props) => {
       <OrderButton
         content='ORDER NOW'
         purchasable={props.purchasable}
+        purchasing={props.purchasing}
       />
     </div>
   );
