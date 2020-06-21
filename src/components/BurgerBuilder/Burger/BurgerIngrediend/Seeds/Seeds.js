@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Seeds.module.css'
-import Fragment from "../../../../hoc/Fragment";
+import Fragment from "../../../../../hoc/Fragment";
 
 
 const Seeds = () => (
