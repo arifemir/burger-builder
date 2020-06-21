@@ -59,3 +59,18 @@
     color: #ffffff;
 }
 
+.Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width:600px) {
+    .List {
+        margin:0 auto;
+    }
+    .ListItem {
+        height: 1.5rem;
+        margin: 0.8rem auto;
+    }
+}

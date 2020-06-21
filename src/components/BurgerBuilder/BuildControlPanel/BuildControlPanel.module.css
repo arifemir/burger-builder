@@ -15,7 +15,7 @@
     .BuildControls {
         flex-flow: row wrap;
         padding: 10px 10px;
-        bottom:-200px;
+        bottom:-250px;
     }
 }
 
@@ -23,20 +23,15 @@
     .BuildControls {
         flex-flow: row wrap;
         padding: 10px 10px;
-        bottom:-200px;
+        bottom:-320px;
     }
 }
 
-@media (max-width:500px) and (min-height:700px) {
-    .BuildControls {
-        bottom:-150px;
-    }
-}
 
 @media (max-width:500px) and (min-height:800px) {
     .BuildControls {
-        bottom:-100px;
         font-size:24px;
+        bottom:-250px;
     }
 }
 

@@ -9,13 +9,9 @@
     outline:none;
     transition:all 0.5s ease-out;
     transform:rotate(0deg);
-}
-.continue {
-    float:right;
-}
-
-.cancel {
-    float:left;
+    margin:10px;
+    width:40%;
+    text-align: center;
 }
 
 .SummaryBtn:hover {
@@ -26,3 +22,4 @@
 .SummaryBtn:focus {
     transform:rotate(3600deg);
 }
+

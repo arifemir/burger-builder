@@ -3,7 +3,9 @@
 }
 
 .Content {
-    height:100vh;
+    height:calc(100vh - 56px);
     width: 100vw;
-    position: relative;
+    position: absolute;
+    bottom:0;
+    margin-top:24px;
 }

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 import Fragment from "../../hoc/Fragment";
-import Burger from "../../components/Burger/Burger";
-import BuildControlPanel from "../../components/BuildControlPanel/BuildControlPanel";
+import Burger from "../../components/BurgerBuilder/Burger/Burger";
+import BuildControlPanel from "../../components/BurgerBuilder/BuildControlPanel/BuildControlPanel";
 import Modal from "../../components/UI/Modal/Modal";
-import OrderSummary from "../../components/OrderSummary/OrderSummary";
+import OrderSummary from "../../components/BurgerBuilder/OrderSummary/OrderSummary";
 
 const INGREDIENT_PRICES = {
   salad: 1,
@@ -76,6 +76,7 @@ class BurgerBuilder extends Component {
 
     return (
       <Fragment>
+        <Burger ingredients={this.state.ingredients}/>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
           <OrderSummary
             ingredients={this.state.ingredients}
@@ -84,7 +85,6 @@ class BurgerBuilder extends Component {
             price={this.state.totalPrice}
           />
         </Modal>
-        <Burger ingredients={this.state.ingredients}/>
         <BuildControlPanel
           addIngredient={(type) => this.addIngredientHandler(type)}
           removeIngredient={(type) => this.removeIngredientHandler(type)}

@@ -1,11 +1,10 @@
 import React from 'react';
 
 import styles from './OrderSummaryButton.module.css'
-import cn from 'classnames'
 const OrderSummaryButton = (props) => {
   return (
     <button
-      className={cn(styles.SummaryBtn,props.children==='Cancel'?styles.cancel:styles.continue)}
+      className={styles.SummaryBtn}
       onClick={props.purchaseState}
     >
       {props.children}

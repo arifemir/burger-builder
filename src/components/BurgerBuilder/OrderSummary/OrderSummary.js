@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Fragment from "../../hoc/Fragment";
+import Fragment from "../../../hoc/Fragment";
 import styles from './OrderSummary.module.css'
 import cn from 'classnames'
 import ControlLabel from "../BuildControlPanel/Control/ControlLabel/ControlLabel";
@@ -21,9 +21,11 @@ const OrderSummary = (props) => {
         {ingredientSummary}
       </ol>
       <p>Total Price:<strong> {props.price}$</strong></p>
-      <OrderSummaryButton purchaseState={props.purchaseCanceled} >Cancel</OrderSummaryButton>
-      <OrderSummaryButton purchaseState={props.purchaseContinue}>Continue</OrderSummaryButton>
-    </Fragment>
+      <div className={styles.Buttons}>
+        <OrderSummaryButton purchaseState={props.purchaseCanceled} >Cancel</OrderSummaryButton>
+        <OrderSummaryButton purchaseState={props.purchaseContinue}>Continue</OrderSummaryButton>
+      </div>
+      </Fragment>
   );
 };
 

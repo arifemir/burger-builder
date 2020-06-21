@@ -13,6 +13,7 @@
     box-sizing:border-box;
     transition:all 1s ease-out;
     transform:skew(0deg);
+
 }
 .none {
     visibility: hidden;
@@ -24,5 +25,19 @@
     .Modal {
         width: 500px;
         left: calc(50% - 250px);
+    }
+}
+
+@media (max-width:600px) {
+    .Modal {
+        width: 250px;
+        height:460px;
+        top: 20px;
+        left: calc(50% - 125px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding:0;
     }
 }
