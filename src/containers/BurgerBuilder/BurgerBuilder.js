@@ -62,8 +62,6 @@ class BurgerBuilder extends Component {
     }
   }
 
-
-
   render()
   {
 
