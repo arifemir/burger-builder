@@ -6,3 +6,9 @@
 .Logo img {
     height:100%;
 }
+
+@media (min-width: 500px) {
+    .Logo {
+        display: none;
+    }
+}
