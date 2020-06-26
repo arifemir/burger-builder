@@ -13,7 +13,7 @@ const SideDrawer = (props) => {
   const sideDrawerShowStyle = props.sideDrawerShowState ? styles.Open : styles.Close;
   return (
     <Fragment>
-      <BackDrop show={props.sideDrawerShowState} clicked={props.toggle}  />
+      <BackDrop  show={props.sideDrawerShowState} clicked={props.toggle}  />
       <div className={cn(styles.SideDrawer, sideDrawerShowStyle)}>
         <DrawerToggle click={props.toggle} height="9%" />
         <nav>
