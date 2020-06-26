@@ -3,7 +3,7 @@ import Logo from "../../UI/Logo/Logo";
 
 const DrawerToggle = (props) => {
   return (
-      <Logo click={props.click} height={props.height}/>
+    <Logo click={props.click} height={props.height} />
   );
 };
 

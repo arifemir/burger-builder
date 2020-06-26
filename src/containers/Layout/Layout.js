@@ -15,7 +15,6 @@ class Layout extends React.Component {
       console.log(!prevState)
       return {showSideDrawer:!prevState.showSideDrawer}
     })
-
   }
 
   render() {
