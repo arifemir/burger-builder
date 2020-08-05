@@ -4,8 +4,15 @@ import burgerLogo from '../../../assets/images/burgerLogo.png'
 import styles from './Logo.module.css'
 
 const Logo = (props) => (
-  <div onClick={props.click} style={{height: props.height}} className={styles.Logo}>
-    <img src={burgerLogo} alt="burger"/>
+  <div
+    onClick={props.click}
+    style={{height: props.height}}
+    className={styles.Logo}
+  >
+    <img
+      src={burgerLogo}
+      alt="burger"
+    />
   </div>
 )
 

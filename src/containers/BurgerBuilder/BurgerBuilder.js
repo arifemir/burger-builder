@@ -30,7 +30,14 @@ class BurgerBuilder extends Component {
   componentDidMount() {
     axios.get('https://burger-67864.firebaseio.com/ingredients.json')
       .then(response => {
-        this.setState({ingredients:response.data});
+        this.setState({ingredients:response.data} , () => {
+          let fetchedIngredients = {...this.state.ingredients}
+          let price = 0;
+          for (let i in fetchedIngredients) {
+            price += fetchedIngredients[i] * INGREDIENT_PRICES[i];
+          }
+          this.setState({totalPrice: price});
+        });
       })
       .catch(error => {
         this.setState({error:true})

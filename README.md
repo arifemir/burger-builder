@@ -8,12 +8,14 @@
 <p>
 access firebase server for order management
 <li>
-<code>started with commit 54</code>
+<code>started with commit 54 => ended with commit 58 </code>
 </li>
 </p>
  
 <h1>step-3</h1>
 <p>adding routing using react router</p>
-<h2>step-2 how we can know we need React Router</h2>
+<h2>step-3 how we can know we need React Router</h2>
 <p> we should redirect users to specific pages but its single page application time to react router(or any alternatives) </p>
-
+<li>
+<code>started with commit 59 => ended with commit ? </code>
+</li>
