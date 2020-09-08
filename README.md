@@ -19,3 +19,6 @@ access firebase server for order management
 <li>
 <code>started with commit 59 => ended with commit ? </code>
 </li>
+
+<h1>step-4</h1>
+<p>implement redux</p>
