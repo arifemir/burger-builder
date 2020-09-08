@@ -1,0 +1,15 @@
+.Btn {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-weight: bolder;
+	font-size: 14px;
+}
+
+.Success {
+	color: #36b119;
+}
+
+.Danger {
+	color: #ff3400;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Burger from '../../BurgerBuilder/Burger/Burger'
-
+import Button from '../../util/Button'
 import styles from './CheckoutSummary.module.css'
 
 const CheckoutSummary = props => {
@@ -11,32 +11,12 @@ const CheckoutSummary = props => {
 			<div style={{ width: '100%', height: '300px', margin: 'auto' }}>
 				<Burger ingredients={ingredients} />
 			</div>
-			<button
-				onClick={checkoutCancelled}
-				style={{
-					color: '#ff3400',
-					fontSize: '14px',
-					backgroundColor: 'transparent',
-					border: 'none',
-					cursor: 'pointer',
-					fontWeight: 'bolder'
-				}}
-			>
+			<Button onClick={checkoutCancelled} type={'danger'}>
 				CANCEL
-			</button>
-			<button
-				onClick={checkoutContinued}
-				style={{
-					color: '#36b119',
-					fontSize: '14px',
-					backgroundColor: 'transparent',
-					border: 'none',
-					cursor: 'pointer',
-					fontWeight: 'bolder'
-				}}
-			>
+			</Button>
+			<Button onClick={checkoutContinued} type={'success'}>
 				SUCCESS
-			</button>
+			</Button>
 		</div>
 	)
 }
