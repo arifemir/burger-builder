@@ -1,12 +1,31 @@
 import React from 'react'
 import styles from './Order.module.css'
 
-const Order = () => {
+const Order = props => {
+	const { customer, price, ingredients } = props.order
+	const ingredientArray = []
+	for (let ingredientName in ingredients) {
+		ingredientArray.push({
+			name: ingredientName,
+			amount: ingredients[ingredientName]
+		})
+	}
 	return (
-		<div className={styles.styles}>
-			<p>Ingredients: Salad(1)</p>
+		<div className={styles.Order}>
 			<p>
-				Price <strong>USD 5.45</strong>
+				Ingredients:
+				<ul>
+					{ingredientArray.map((ing, i) => {
+						return (
+							<li>
+								{ing.name}({ing.amount})
+							</li>
+						)
+					})}
+				</ul>
+			</p>
+			<p>
+				Price <strong>USD {price}</strong>
 			</p>
 		</div>
 	)
