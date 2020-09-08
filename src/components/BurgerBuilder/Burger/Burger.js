@@ -6,7 +6,7 @@ import styles from './Burger.module.css'
 const Burger = props => {
 	const ingredients = { ...props.ingredients }
 	const showingIngredient = []
-	console.log(props)
+
 	for (let key in ingredients) {
 		for (let i = 0; i < ingredients[key]; i++) {
 			showingIngredient.push(<BurgerIngredient key={key + i} type={key} />)
