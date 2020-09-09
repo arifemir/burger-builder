@@ -7,32 +7,25 @@ import Input from '../../../components/UI/Input/Input'
 import { withRouter } from 'react-router-dom'
 class ContactData extends Component {
 	state = {
-		name: '',
-		email: '',
-		adress: {
-			street: '',
-			postalCode: ''
-		},
+		name: undefined,
+		street: undefined,
+		postal: undefined,
+		email: undefined,
 		loading: false
 	}
 
 	orderHandler = e => {
 		const { ingredients, price } = this.props
+		const { name, street, postal, email } = this.state
 		e.preventDefault()
 		this.setState({ loading: true })
 		const order = {
 			ingredients,
 			price,
-			customer: {
-				name: 'arif',
-				age: 21,
-				address: {
-					street: 'Teststreet 1',
-					zipCode: '41355',
-					country: 'Sakarya'
-				},
-				email: 'arif@gauk.com'
-			}
+			name,
+			street,
+			postal,
+			email
 		}
 		axios
 			.post('/orders.json', order)
@@ -46,17 +39,52 @@ class ContactData extends Component {
 			})
 	}
 
+	handleInputChange = e => {
+		const { value, name } = e.target
+		this.setState({ [name]: value })
+	}
+
 	render() {
+		const { name, email, street, postal } = this.state
+
 		return this.state.loading ? (
 			<Spinner />
 		) : (
 			<div className={styles.ContactData}>
 				<h4>Enter your Contact Data</h4>
 				<form>
-					<Input inputtype={'input'} type='text' name='name' placeholder='Your name' />
-					<Input inputtype={'input'} type='text' name='email' placeholder='Your email' />
-					<Input inputtype={'input'} type='text' name='street' placeholder='Street' />
-					<Input inputtype={'input'} type='text' name='postal' placeholder='Postal Code' />
+					<Input
+						inputtype={'input'}
+						type='text'
+						name='name'
+						placeholder='Your name'
+						onChange={this.handleInputChange}
+						value={name}
+					/>
+					<Input
+						inputtype={'input'}
+						type='text'
+						name='email'
+						placeholder='Your email'
+						onChange={this.handleInputChange}
+						value={email}
+					/>
+					<Input
+						inputtype={'input'}
+						type='text'
+						name='street'
+						placeholder='Street'
+						onChange={this.handleInputChange}
+						value={street}
+					/>
+					<Input
+						inputtype={'input'}
+						type='text'
+						name='postal'
+						placeholder='Postal Code'
+						onChange={this.handleInputChange}
+						value={postal}
+					/>
 					<Button type='success' onClick={this.orderHandler}>
 						Order
 					</Button>
