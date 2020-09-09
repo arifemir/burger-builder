@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Order.module.css'
 
 const Order = props => {
-	const { customer, price, ingredients } = props.order
+	const { email, name, postal, street, price, ingredients } = props.order
 	const ingredientArray = []
 	for (let ingredientName in ingredients) {
 		ingredientArray.push({
@@ -12,6 +12,13 @@ const Order = props => {
 	}
 	return (
 		<div className={styles.Order}>
+			<h3>Recieper</h3>
+			<div className={styles.Infos}>
+				<div>mail: {email}</div>
+				<div>name: {name}</div>
+				<div>postal: {postal}</div>
+				<div>street: {street}</div>
+			</div>
 			<p>
 				Ingredients:
 				<ul>
