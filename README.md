@@ -17,8 +17,8 @@ access firebase server for order management
 <h2>step-3 how we can know we need React Router</h2>
 <p> we should redirect users to specific pages but its single page application time to react router(or any alternatives) </p>
 <li>
-<code>started with commit 59 => ended with commit ? </code>
+<code>started with commit 59 => ended with commit 72 </code>
 </li>
 
 <h1>step-4</h1>
-<p>implement redux</p>
+<p><code> implement-redux </code> is a new branch state managed by redux</p>
