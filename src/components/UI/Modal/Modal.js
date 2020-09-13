@@ -22,14 +22,16 @@ class Modal extends React.Component {
 					clicked={this.props.orderNowClose}
 					show={this.props.purchasing}
 				/>
-				<div
-					className={cn(
-						styles.Modal,
-						!this.props.purchasing === true && styles.none
-					)}
-				>
-					{this.props.children}
-				</div>
+				{this.props.children && (
+					<div
+						className={cn(
+							styles.Modal,
+							!this.props.purchasing === true && styles.none
+						)}
+					>
+						{this.props.children}
+					</div>
+				)}
 			</Fragment>
 		)
 	}
