@@ -14,7 +14,13 @@ const initialState = {
 		cheese: 0,
 		meat: 0
 	},
-	totalPrice: 0
+	totalPrice: 0,
+	purchasable: false,
+	purchasing: false
+}
+const updatePurchaseState = updatedIngredients => {
+	const sum = Object.values(updatedIngredients).reduce((x, y) => x + y, 0)
+	return sum > 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -22,24 +28,36 @@ const reducer = (state = initialState, action) => {
 	const { type, ingredientName } = action
 	switch (type) {
 		case actionTypes.ADD_INGREDIENTS: {
-			return {
-				...state,
-				ingredients: {
-					...ingredients,
-					[ingredientName]: ingredients[ingredientName] + 1
-				},
-				totalPrice: totalPrice + INGREDIENT_PRICES[ingredientName]
+			const newState = { ...state }
+			newState.ingredients = {
+				...ingredients,
+				[ingredientName]: ingredients[ingredientName] + 1
 			}
+			newState.totalPrice = totalPrice + INGREDIENT_PRICES[ingredientName]
+			newState.purchasable = updatePurchaseState(newState.ingredients)
+
+			return newState
 		}
 		case actionTypes.REMOVE_INGREDIENTS: {
-			return {
-				...state,
-				ingredients: {
-					...ingredients,
-					[ingredientName]: ingredients[ingredientName] - 1
-				},
-				totalPrice: totalPrice - INGREDIENT_PRICES[ingredientName]
+			const newState = { ...state }
+			newState.ingredients = {
+				...ingredients,
+				[ingredientName]: ingredients[ingredientName] - 1
 			}
+			newState.totalPrice = totalPrice - INGREDIENT_PRICES[ingredientName]
+			newState.purchasable = updatePurchaseState(newState.ingredients)
+
+			return newState
+		}
+		case actionTypes.ORDER_NOW_OPEN: {
+			const newState = { ...state }
+			newState.purchasing = true
+			return newState
+		}
+		case actionTypes.ORDER_NOW_CLOSE: {
+			const newState = { ...state }
+			newState.purchasing = false
+			return newState
 		}
 		default:
 			return state

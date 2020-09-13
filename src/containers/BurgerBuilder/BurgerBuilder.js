@@ -14,9 +14,6 @@ import ErrorHandler from '../../hoc/ErrorHandler/ErrorHandler'
 
 class BurgerBuilder extends Component {
 	state = {
-		purchasable: true,
-		purchasing: false,
-		orderButtonText: 'ORDER NOW',
 		loading: false,
 		error: null
 	}
@@ -39,19 +36,6 @@ class BurgerBuilder extends Component {
 		// 	})
 	}
 
-	updatePurchaseState(updatedIngredients) {
-		const sum = Object.values(updatedIngredients).reduce((x, y) => x + y, 0)
-		this.setState({ purchasable: sum > 0 })
-	}
-
-	purchaseHandler = () => {
-		this.setState({ purchasing: true })
-	}
-
-	purchaseCancelHandler = () => {
-		this.setState({ purchasing: false })
-	}
-
 	purchaseContinueHandler = () => {
 		const queryParams = []
 		for (let i in this.props.ingredients)
@@ -70,8 +54,9 @@ class BurgerBuilder extends Component {
 	}
 
 	render() {
+		const { ingredients, totalPrice } = this.props
 		const disabledInfo = {
-			...this.props.ingredients
+			...ingredients
 		}
 
 		for (let key in disabledInfo) disabledInfo[key] = disabledInfo[key] <= 0
@@ -84,40 +69,27 @@ class BurgerBuilder extends Component {
 			<Spinner />
 		)
 
-		if (this.props.ingredients) {
+		if (ingredients) {
 			burger = (
 				<Fragment>
-					<Burger ingredients={this.props.ingredients} />
+					<Burger ingredients={ingredients} />
 					<BuildControlPanel
 						addIngredient={this.props.addIngredient}
 						removeIngredient={this.props.removeIngredient}
 						disabledInfo={disabledInfo}
-						price={this.props.totalPrice}
-						purchasable={this.state.purchasable}
-						purchasing={this.purchaseHandler}
-						orderButtonText={this.state.orderButtonText}
+						price={totalPrice}
 					/>
 				</Fragment>
 			)
 			orderSummary = (
-				<OrderSummary
-					ingredients={this.props.ingredients}
-					purchaseCanceled={this.purchaseCancelHandler}
-					purchaseContinue={this.purchaseContinueHandler}
-					price={this.props.totalPrice}
-				/>
+				<OrderSummary purchaseContinue={this.purchaseContinueHandler} />
 			)
 		}
 		if (this.state.loading) orderSummary = <Spinner />
 
 		return (
 			<Fragment>
-				<Modal
-					show={this.state.purchasing}
-					modalClosed={this.purchaseCancelHandler}
-				>
-					{orderSummary}
-				</Modal>
+				<Modal>{orderSummary}</Modal>
 				{burger}
 			</Fragment>
 		)
@@ -134,10 +106,11 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-	const { ingredients, totalPrice } = state
+	const { ingredients, totalPrice, purchasable } = state
 	return {
 		ingredients,
-		totalPrice
+		totalPrice,
+		purchasable
 	}
 }
 

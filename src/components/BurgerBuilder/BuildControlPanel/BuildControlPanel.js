@@ -25,11 +25,7 @@ const BuildControlPanel = props => {
 					disabledInfo={props.disabledInfo[ctrl.type]}
 				/>
 			))}
-			<OrderButton
-				orderButtonText={props.orderButtonText}
-				purchasable={props.purchasable}
-				purchasing={props.purchasing}
-			/>
+			<OrderButton orderButtonText={'ORDER NOW'} />
 		</div>
 	)
 }

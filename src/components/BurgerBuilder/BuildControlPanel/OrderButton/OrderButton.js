@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import * as actionTypes from '../../../../store/actions'
 import styles from './OrderButton.module.css'
 
-const OrderButton = (props) => {
-  return (
-    <button
-      className={styles.OrderButton}
-      disabled={!props.purchasable}
-      onClick={props.purchasing}
-    >
-      {
-        props.orderButtonText
-      }
-    </button>
-  );
-};
+class OrderButton extends Component {
+	render() {
+		return (
+			<button
+				className={styles.OrderButton}
+				disabled={!this.props.purchasable}
+				onClick={this.props.orderNowOpen}
+			>
+				{this.props.orderButtonText}
+			</button>
+		)
+	}
+}
 
-export default OrderButton;
+const mapDispatchToProps = dispatch => {
+	return {
+		orderNowOpen: () => dispatch({ type: actionTypes.ORDER_NOW_OPEN })
+	}
+}
+
+const mapStateToProps = state => {
+	const { purchasable } = state
+	return { purchasable }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderButton)
