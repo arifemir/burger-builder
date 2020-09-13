@@ -1,5 +1,12 @@
 import * as actionTypes from './actions'
 
+const INGREDIENT_PRICES = {
+	salad: 1,
+	cheese: 1,
+	meat: 2,
+	bacon: 2
+}
+
 const initialState = {
 	ingredients: {
 		salad: 0,
@@ -11,24 +18,29 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-	switch (action.type) {
-		case actionTypes.ADD_INGREDIENTS:
+	const { ingredients, totalPrice } = state
+	const { type, ingredientName } = action
+	switch (type) {
+		case actionTypes.ADD_INGREDIENTS: {
 			return {
 				...state,
 				ingredients: {
-					...state.ingredients,
-					[action.ingredientName]: state.ingredients[action.ingredientName] + 1
-				}
+					...ingredients,
+					[ingredientName]: ingredients[ingredientName] + 1
+				},
+				totalPrice: totalPrice + INGREDIENT_PRICES[ingredientName]
 			}
-
-		case actionTypes.REMOVE_INGREDIENTS:
+		}
+		case actionTypes.REMOVE_INGREDIENTS: {
 			return {
 				...state,
 				ingredients: {
-					...state.ingredients,
-					[action.ingredientName]: state.ingredients[action.ingredientName] - 1
-				}
+					...ingredients,
+					[ingredientName]: ingredients[ingredientName] - 1
+				},
+				totalPrice: totalPrice - INGREDIENT_PRICES[ingredientName]
 			}
+		}
 		default:
 			return state
 	}
