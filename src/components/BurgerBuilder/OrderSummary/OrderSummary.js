@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actionTypes from '../../../store/actions'
+import * as actionTypes from '../../../store/actions/actionTypes'
 import Fragment from '../../../hoc/Fragment'
 import styles from './OrderSummary.module.css'
 import cn from 'classnames'

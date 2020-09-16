@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from '../../axiosOrders'
 //redux
 import { connect } from 'react-redux'
-import * as actionTypes from '../../store/actions'
+import * as actionTypes from '../../store/actions/actionTypes'
 
 import Fragment from '../../hoc/Fragment'
 import Burger from '../../components/BurgerBuilder/Burger/Burger'

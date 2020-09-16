@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actionTypes from '../../../../store/actions'
+import * as actionTypes from '../../../../store/actions/actionTypes'
 import styles from './OrderButton.module.css'
 
 class OrderButton extends Component {
