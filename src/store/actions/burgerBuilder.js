@@ -1,5 +1,4 @@
-import * as actionTypes from './actionTypes'
-const { ADD_INGREDIENTS, REMOVE_INGREDIENTS } = actionTypes
+import { ADD_INGREDIENTS, REMOVE_INGREDIENTS } from './actionTypes'
 
 export const addIngredient = ingredientName => {
 	return {

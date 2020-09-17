@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
-import * as actionTypes from '../../../../store/actions/actionTypes'
+import { orderNowOpen } from '../../../../store/actions'
+
 import styles from './OrderButton.module.css'
 
 class OrderButton extends Component {
@@ -9,7 +11,7 @@ class OrderButton extends Component {
 			<button
 				className={styles.OrderButton}
 				disabled={!this.props.purchasable}
-				onClick={this.props.orderNowOpen}
+				onClick={this.props.orderNowOpenP}
 			>
 				{this.props.orderButtonText}
 			</button>
@@ -19,12 +21,12 @@ class OrderButton extends Component {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		orderNowOpen: () => dispatch({ type: actionTypes.ORDER_NOW_OPEN })
+		orderNowOpenP: () => dispatch(orderNowOpen())
 	}
 }
 
 const mapStateToProps = state => {
-	const { purchasable } = state
+	const { purchasable } = state.burgerBuilderReducer
 	return { purchasable }
 }
 

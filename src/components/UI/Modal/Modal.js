@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actionTypes from '../../../store/actions/actionTypes'
+import { orderNowClose } from '../../../store/actions'
 
 import styles from './Modal.module.css'
 import cn from 'classnames'
@@ -19,7 +19,7 @@ class Modal extends React.Component {
 		return (
 			<Fragment>
 				<BackDrop
-					clicked={this.props.orderNowClose}
+					clicked={this.props.orderNowCloseP}
 					show={this.props.purchasing}
 				/>
 				{this.props.children && (
@@ -38,13 +38,13 @@ class Modal extends React.Component {
 }
 
 const mapStateToProps = state => {
-	const { purchasing } = state
+	const { purchasing } = state.modalReducer
 	return { purchasing }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		orderNowClose: () => dispatch({ type: actionTypes.ORDER_NOW_CLOSE })
+		orderNowCloseP: () => dispatch(orderNowClose())
 	}
 }
 

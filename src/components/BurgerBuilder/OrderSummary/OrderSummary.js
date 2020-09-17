@@ -1,6 +1,8 @@
 import React from 'react'
+//redux
 import { connect } from 'react-redux'
-import * as actionTypes from '../../../store/actions/actionTypes'
+import { orderNowClose } from '../../../store/actions'
+
 import Fragment from '../../../hoc/Fragment'
 import styles from './OrderSummary.module.css'
 import cn from 'classnames'
@@ -27,7 +29,7 @@ class OrderSummary extends React.Component {
 					Total Price:<strong> {this.props.totalPrice}$</strong>
 				</p>
 				<div className={styles.Buttons}>
-					<OrderSummaryButton purchaseState={this.props.orderNowClose}>
+					<OrderSummaryButton purchaseState={this.props.orderNowCloseP}>
 						Cancel
 					</OrderSummaryButton>
 					<OrderSummaryButton purchaseState={this.props.purchaseContinue}>
@@ -40,13 +42,13 @@ class OrderSummary extends React.Component {
 }
 
 const mapStateToProps = state => {
-	const { purchasing, totalPrice, ingredients } = state
+	const { totalPrice, ingredients, purchasing } = state.burgerBuilderReducer
 	return { purchasing, totalPrice, ingredients }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		orderNowClose: () => dispatch({ type: actionTypes.ORDER_NOW_CLOSE })
+		orderNowCloseP: () => dispatch(orderNowClose())
 	}
 }
 

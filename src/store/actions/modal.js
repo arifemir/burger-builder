@@ -1,5 +1,4 @@
-import * as actionTypes from './actionTypes'
-const { ORDER_NOW_OPEN, ORDER_NOW_CLOSE } = actionTypes
+import { ORDER_NOW_OPEN, ORDER_NOW_CLOSE } from './actionTypes'
 
 export const orderNowOpen = () => {
 	return {

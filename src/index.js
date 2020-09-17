@@ -8,10 +8,10 @@ import { BrowserRouter } from 'react-router-dom'
 //redux
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import reducer from './store/reducers/reducer'
+import reducers from './store/reducers/reducers'
 
 const store = createStore(
-	reducer,
+	reducers,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

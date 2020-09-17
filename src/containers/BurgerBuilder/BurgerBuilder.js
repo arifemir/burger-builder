@@ -98,7 +98,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-	const { ingredients, totalPrice, purchasable } = state
+	const { ingredients, totalPrice, purchasable } = state.burgerBuilderReducer
 	return {
 		ingredients,
 		totalPrice,
