@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import axios from '../../axiosOrders'
 //redux
 import { connect } from 'react-redux'
-import * as actionTypes from '../../store/actions/actionTypes'
+import {
+	addIngredient,
+	removeIngredient,
+	orderNowClose
+} from '../../store/actions'
 
 import Fragment from '../../hoc/Fragment'
 import Burger from '../../components/BurgerBuilder/Burger/Burger'
@@ -38,7 +42,7 @@ class BurgerBuilder extends Component {
 
 	purchaseContinueHandler = () => {
 		this.props.history.push('/checkout')
-		this.props.orderNowClose()
+		this.props.orderNowCloseP()
 	}
 
 	render() {
@@ -62,8 +66,8 @@ class BurgerBuilder extends Component {
 				<Fragment>
 					<Burger ingredients={ingredients} />
 					<BuildControlPanel
-						addIngredient={this.props.addIngredient}
-						removeIngredient={this.props.removeIngredient}
+						addIngredient={this.props.addIngredientP}
+						removeIngredient={this.props.removeIngredientP}
 						disabledInfo={disabledInfo}
 						price={totalPrice}
 					/>
@@ -86,11 +90,10 @@ class BurgerBuilder extends Component {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addIngredient: ingredientName =>
-			dispatch({ type: actionTypes.ADD_INGREDIENTS, ingredientName }),
-		removeIngredient: ingredientName =>
-			dispatch({ type: actionTypes.REMOVE_INGREDIENTS, ingredientName }),
-		orderNowClose: () => dispatch({ type: actionTypes.ORDER_NOW_CLOSE })
+		addIngredientP: ingredientName => dispatch(addIngredient(ingredientName)),
+		removeIngredientP: ingredientName =>
+			dispatch(removeIngredient(ingredientName)),
+		orderNowCloseP: () => dispatch(orderNowClose())
 	}
 }
 
