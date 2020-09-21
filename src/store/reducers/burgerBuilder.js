@@ -8,14 +8,10 @@ const INGREDIENT_PRICES = {
 }
 
 const initialState = {
-	ingredients: {
-		salad: 0,
-		bacon: 0,
-		cheese: 0,
-		meat: 0
-	},
+	ingredients: null,
 	totalPrice: 0,
-	purchasable: false
+	purchasable: false,
+	error: null
 }
 
 const updatePurchaseState = updatedIngredients => {
@@ -24,16 +20,16 @@ const updatePurchaseState = updatedIngredients => {
 }
 
 const reducer = (state = initialState, action) => {
-	const { ingredients, totalPrice } = state
-	const { type, ingredientName } = action
-	switch (type) {
+	const { ingredients, totalPrice, purchasable, error } = state
+	switch (action.type) {
 		case actionTypes.ADD_INGREDIENTS: {
 			const newState = { ...state }
 			newState.ingredients = {
 				...ingredients,
-				[ingredientName]: ingredients[ingredientName] + 1
+				[action.ingredientName]: ingredients[action.ingredientName] + 1
 			}
-			newState.totalPrice = totalPrice + INGREDIENT_PRICES[ingredientName]
+			newState.totalPrice =
+				state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
 			newState.purchasable = updatePurchaseState(newState.ingredients)
 
 			return newState
@@ -42,12 +38,27 @@ const reducer = (state = initialState, action) => {
 			const newState = { ...state }
 			newState.ingredients = {
 				...ingredients,
-				[ingredientName]: ingredients[ingredientName] - 1
+				[action.ingredientName]: ingredients[action.ingredientName] - 1
 			}
-			newState.totalPrice = totalPrice - INGREDIENT_PRICES[ingredientName]
+			newState.totalPrice =
+				totalPrice - INGREDIENT_PRICES[action.ingredientName]
 			newState.purchasable = updatePurchaseState(newState.ingredients)
-
 			return newState
+		}
+		case actionTypes.SET_INGREDIENTS: {
+			return {
+				...state,
+				ingredients: action.ingredients,
+				totalPrice: action.ingredients.totalPrice,
+				purchasable: updatePurchaseState(action.ingredients),
+				error: false
+			}
+		}
+		case actionTypes.FETCH_INGREDIENTS_FAILED: {
+			return {
+				...state,
+				error: action.error
+			}
 		}
 		default:
 			return state
