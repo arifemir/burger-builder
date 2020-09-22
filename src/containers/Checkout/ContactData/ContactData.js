@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
+import { purchhaseBurgerStart } from '../../../store/actions'
 
 import Button from '../../../components/util/Button'
 import styles from './ContactData.module.css'
-import axios from '../../../axiosOrders'
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input'
 import { withRouter } from 'react-router-dom'
+
 class ContactData extends Component {
 	state = {
 		name: undefined,
@@ -20,7 +22,6 @@ class ContactData extends Component {
 		const { ingredients, price } = this.props
 		const { name, street, postal, email } = this.state
 		e.preventDefault()
-		this.setState({ loading: true })
 		const order = {
 			ingredients,
 			price,
@@ -29,6 +30,7 @@ class ContactData extends Component {
 			postal,
 			email
 		}
+		this.props.onOrderBurger(order)
 	}
 
 	handleInputChange = e => {
@@ -91,4 +93,13 @@ const mapStateToProps = state => {
 	return { ingredients, totalPrice }
 }
 
-export default connect(mapStateToProps)(withRouter(ContactData))
+const mapDispatchToProps = dispatch => {
+	return {
+		onOrderBurger: orderData => dispatch(purchhaseBurgerStart(orderData))
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withRouter(ContactData))
