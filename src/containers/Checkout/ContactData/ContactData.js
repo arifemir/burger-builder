@@ -29,16 +29,6 @@ class ContactData extends Component {
 			postal,
 			email
 		}
-		axios
-			.post('/orders.json', order)
-			.then(res => {
-				console.log(res)
-				this.setState({ loading: false })
-				this.props.history.push('/')
-			})
-			.catch(err => {
-				this.setState({ loading: false })
-			})
 	}
 
 	handleInputChange = e => {
