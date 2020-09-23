@@ -1,42 +1,35 @@
 import React, { Component } from 'react'
+
+import { connect } from 'react-redux'
+import { purchaseBurgerStart } from '../../../store/actions'
+
 import Button from '../../../components/util/Button'
 import styles from './ContactData.module.css'
-import axios from '../../../axiosOrders'
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input'
 import { withRouter } from 'react-router-dom'
+
 class ContactData extends Component {
 	state = {
 		name: undefined,
 		street: undefined,
 		postal: undefined,
-		email: undefined,
-		loading: false
+		email: undefined
 	}
 
 	orderHandler = e => {
-		const { ingredients, price } = this.props
+		const { ingredients, totalPrice } = this.props
 		const { name, street, postal, email } = this.state
 		e.preventDefault()
-		this.setState({ loading: true })
 		const order = {
 			ingredients,
-			price,
+			totalPrice,
 			name,
 			street,
 			postal,
 			email
 		}
-		axios
-			.post('/orders.json', order)
-			.then(res => {
-				console.log(res)
-				this.setState({ loading: false })
-				this.props.history.push('/')
-			})
-			.catch(err => {
-				this.setState({ loading: false })
-			})
+		this.props.onOrderBurger(order)
 	}
 
 	handleInputChange = e => {
@@ -47,7 +40,7 @@ class ContactData extends Component {
 	render() {
 		const { name, email, street, postal } = this.state
 
-		return this.state.loading ? (
+		return this.props.loading ? (
 			<Spinner />
 		) : (
 			<div className={styles.ContactData}>
@@ -94,4 +87,19 @@ class ContactData extends Component {
 	}
 }
 
-export default withRouter(ContactData)
+const mapStateToProps = state => {
+	const { ingredients, totalPrice } = state.burgerBuilderReducer
+	const { loading } = state.orderReducer
+	return { ingredients, totalPrice, loading }
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onOrderBurger: orderData => dispatch(purchaseBurgerStart(orderData))
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withRouter(ContactData))
