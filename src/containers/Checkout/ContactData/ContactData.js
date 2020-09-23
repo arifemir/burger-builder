@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { purchhaseBurgerStart } from '../../../store/actions'
+import { purchaseBurgerStart } from '../../../store/actions'
 
 import Button from '../../../components/util/Button'
 import styles from './ContactData.module.css'
@@ -14,8 +14,7 @@ class ContactData extends Component {
 		name: undefined,
 		street: undefined,
 		postal: undefined,
-		email: undefined,
-		loading: false
+		email: undefined
 	}
 
 	orderHandler = e => {
@@ -41,7 +40,7 @@ class ContactData extends Component {
 	render() {
 		const { name, email, street, postal } = this.state
 
-		return this.state.loading ? (
+		return this.props.loading ? (
 			<Spinner />
 		) : (
 			<div className={styles.ContactData}>
@@ -90,12 +89,13 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
 	const { ingredients, totalPrice } = state.burgerBuilderReducer
-	return { ingredients, totalPrice }
+	const { loading } = state.orderReducer
+	return { ingredients, totalPrice, loading }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onOrderBurger: orderData => dispatch(purchhaseBurgerStart(orderData))
+		onOrderBurger: orderData => dispatch(purchaseBurgerStart(orderData))
 	}
 }
 
