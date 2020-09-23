@@ -20,7 +20,7 @@ const updatePurchaseState = updatedIngredients => {
 }
 
 const reducer = (state = initialState, action) => {
-	const { ingredients, totalPrice, purchasable, error } = state
+	const { ingredients, totalPrice } = state
 	switch (action.type) {
 		case actionTypes.ADD_INGREDIENTS: {
 			const newState = { ...state }

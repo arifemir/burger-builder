@@ -6,7 +6,8 @@ import {
 	addIngredient,
 	removeIngredient,
 	orderNowClose,
-	initIngredient
+	initIngredient,
+	purchaseInit
 } from '../../store/actions'
 
 import Fragment from '../../hoc/Fragment'
@@ -22,6 +23,7 @@ class BurgerBuilder extends Component {
 	}
 
 	purchaseContinueHandler = () => {
+		this.props.onInitPurchase()
 		this.props.history.push('/checkout')
 		this.props.orderNowCloseP()
 	}
@@ -70,7 +72,8 @@ const mapDispatchToProps = dispatch => {
 		removeIngredientP: ingredientName =>
 			dispatch(removeIngredient(ingredientName)),
 		orderNowCloseP: () => dispatch(orderNowClose()),
-		initIngr: () => dispatch(initIngredient())
+		initIngr: () => dispatch(initIngredient()),
+		onInitPurchase: () => dispatch(purchaseInit())
 	}
 }
 

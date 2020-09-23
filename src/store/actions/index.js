@@ -5,4 +5,4 @@ export {
 } from './burgerBuilder'
 export { orderNowOpen, orderNowClose } from './modal'
 
-export { purchaseBurgerStart } from './order'
+export { purchaseBurgerStart, purchaseInit } from './order'
