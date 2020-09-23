@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes'
 const initialState = {
 	orders: [],
 	loading: false,
-	purchased: false
+	purchased: false,
+	error: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -37,6 +38,26 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				purchased: false
+			}
+		}
+		case actionTypes.FETCH_ORDERS_SUCCESS: {
+			return {
+				...state,
+				orders: action.orders,
+				loading: false
+			}
+		}
+		case actionTypes.FETCH_ORDERS_FAIL: {
+			return {
+				...state,
+				error: action.error,
+				loading: false
+			}
+		}
+		case actionTypes.FETCH_ORDERS_BEFORE_START: {
+			return {
+				...state,
+				loading: true
 			}
 		}
 		default:
