@@ -1,7 +1,8 @@
 export {
 	addIngredient,
 	removeIngredient,
-	initIngredient
+	initIngredient,
+	initTotalPrice
 } from './burgerBuilder'
 export { orderNowOpen, orderNowClose } from './modal'
 

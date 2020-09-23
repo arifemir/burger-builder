@@ -49,8 +49,14 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				ingredients: action.ingredients,
-				totalPrice: action.ingredients.totalPrice,
 				purchasable: updatePurchaseState(action.ingredients),
+				error: false
+			}
+		}
+		case actionTypes.SET_TOTAL_PRICE: {
+			return {
+				...state,
+				totalPrice: action.totalPrice,
 				error: false
 			}
 		}

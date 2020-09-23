@@ -3,7 +3,8 @@ import {
 	ADD_INGREDIENTS,
 	REMOVE_INGREDIENTS,
 	SET_INGREDIENTS,
-	FETCH_INGREDIENTS_FAILED
+	FETCH_INGREDIENTS_FAILED,
+	SET_TOTAL_PRICE
 } from './actionTypes'
 
 export const addIngredient = ingredientName => {
@@ -40,6 +41,27 @@ export const initIngredient = () => {
 			.get('https://burger-67864.firebaseio.com/ingredients.json')
 			.then(res => {
 				dispatch(setIngredients(res.data))
+			})
+			.catch(err => {
+				dispatch(setFetchFailedError(err.message))
+			})
+	}
+}
+
+export const setTotalPrice = totalPrice => {
+	console.log(totalPrice)
+	return {
+		type: SET_TOTAL_PRICE,
+		totalPrice
+	}
+}
+
+export const initTotalPrice = () => {
+	return dispatch => {
+		axios
+			.get('https://burger-67864.firebaseio.com/totalPrice.json')
+			.then(res => {
+				dispatch(setTotalPrice(res.data))
 			})
 			.catch(err => {
 				dispatch(setFetchFailedError(err.message))
