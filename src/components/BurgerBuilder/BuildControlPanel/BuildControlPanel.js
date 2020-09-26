@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './BuildControlPanel.module.css'
 
-import Control from './Control/Control'
-import Price from './Price/Price'
-import OrderButton from './OrderButton/OrderButton'
+import Control from './Control'
+import Price from './Price'
+import OrderButton from './OrderButton'
 
 const controls = [
 	{ label: 'salad', type: 'salad' },

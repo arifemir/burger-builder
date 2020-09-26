@@ -3,11 +3,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { orderNowClose } from '../../../store/actions'
 
-import Fragment from '../../../hoc/Fragment'
+import Fragment from '../../hoc/Fragment'
 import styles from './OrderSummary.module.css'
 import cn from 'classnames'
-import ControlLabel from '../BuildControlPanel/Control/ControlLabel/ControlLabel'
-import OrderSummaryButton from './OrderSummaryButton/OrderSummaryButton'
+import ControlLabel from '../BuildControlPanel/ControlLabel'
+import OrderSummaryButton from './OrderSummaryButton'
 
 class OrderSummary extends React.Component {
 	render() {
