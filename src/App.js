@@ -1,12 +1,13 @@
 import React from 'react'
 import Fragment from './components/hoc/Fragment'
 
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import BurgerBuilder from './pages/BurgerBuilder'
 import Checkout from './pages/Checkout'
 import Orders from './pages/Orders'
 import Layout from './components/Layout/Layout'
+import Auth from "./pages/Auth";
 
 class App extends React.Component {
 	render() {
@@ -16,9 +17,11 @@ class App extends React.Component {
 					<Switch>
 						<Route path='/checkout' component={Checkout} />
 						<Route path='/orders' component={Orders} />
+						<Route path='/auth' component={Auth} />
 						<Route path='/' exact component={BurgerBuilder} />
+            <Redirect to='/'/>
 					</Switch>
-				</Layout>
+        </Layout>
 			</Fragment>
 		)
 	}
