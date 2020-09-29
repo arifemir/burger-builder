@@ -3,6 +3,7 @@ import Button from "../components/util/Button";
 import Input from "../components/UI/Input";
 import { auth } from '../store/actions';
 import {connect} from "react-redux";
+import Spinner from "../components/UI/Spinner";
 
 class Auth extends Component {
   state = {
@@ -81,7 +82,7 @@ class Auth extends Component {
   }
 
   render() {
-
+    const { loading, error } = this.props
     const formElementsArray = []
     for (let key in this.state.controls) {
       formElementsArray.push({
@@ -104,8 +105,8 @@ class Auth extends Component {
         />)
     )
 
-    return (
-      <div className='container d-flex align-items-center flex-column justify-content-around h-100'>
+    const lastShot = error ? <h1 className='text-danger font-weight-bold'>{error}</h1> : (
+      loading ? <Spinner/> : <>
         <div className='d-flex flex-column align-items-center'>
           <div>
             <h1 className='text-primary'>{!this.state.isSignup ? 'Sign-In' : 'Sign-Up'}</h1>
@@ -118,8 +119,16 @@ class Auth extends Component {
           </div>
         </div>
         <Button onClick={this.switchAuthModeHandler} type="danger">SWITCH TO {!this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
-      </div>
-    );
+      </>
+    )
+
+
+
+    return (
+        <div className='container d-flex align-items-center flex-column justify-content-around h-100'>
+          { lastShot }
+        </div>
+    )
   }
 
 }
@@ -130,4 +139,11 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+const mapStateToProps = state => {
+  const {loading, error} = state.authReducer
+  return {
+    loading, error
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
