@@ -7,10 +7,11 @@ export const authStart = () => {
   }
 }
 
-export const authSuccess = (authData) => {
+export const authSuccess = (idToken, localId) => {
   return {
     type: AUTH_SUCCESS,
-    authData
+    idToken,
+    localId
   }
 }
 
@@ -36,7 +37,7 @@ export const auth = (email, password, isSignup) => {
       .post(url, authData)
       .then(res => {
         console.log(res)
-        dispatch(authSuccess(res.data))
+        dispatch(authSuccess(res.data.idToken, res.data.localId))
       })
       .catch(err => {
         console.log(err)
