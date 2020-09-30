@@ -18,7 +18,7 @@ class ContactData extends Component {
 	}
 
 	orderHandler = e => {
-		const { ingredients, totalPrice } = this.props
+		const { ingredients, totalPrice, idToken } = this.props
 		const { name, street, postal, email } = this.state
 		e.preventDefault()
 		const order = {
@@ -29,7 +29,7 @@ class ContactData extends Component {
 			postal,
 			email
 		}
-		this.props.onOrderBurger(order)
+		this.props.onOrderBurger(order, idToken)
 	}
 
 	handleInputChange = e => {
@@ -90,12 +90,13 @@ class ContactData extends Component {
 const mapStateToProps = state => {
 	const { ingredients, totalPrice } = state.burgerBuilderReducer
 	const { loading } = state.orderReducer
-	return { ingredients, totalPrice, loading }
+  const { idToken } = state.authReducer
+	return { ingredients, totalPrice, loading, idToken }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onOrderBurger: orderData => dispatch(purchaseBurgerStart(orderData))
+		onOrderBurger: (orderData, token) => dispatch(purchaseBurgerStart(orderData, token))
 	}
 }
 
