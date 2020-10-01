@@ -18,7 +18,7 @@ const SideDrawer = props => {
 			<div className={cn(styles.SideDrawer, sideDrawerShowStyle)}>
 				<DrawerToggle click={props.toggle} height='9%' />
 				<nav>
-					<NavigationItems />
+					<NavigationItems isAuthenticated={props.isAuth} />
 				</nav>
 			</div>
 		</Fragment>
