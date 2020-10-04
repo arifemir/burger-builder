@@ -4,6 +4,7 @@ import Input from "../components/UI/Input";
 import { auth } from '../store/actions';
 import {connect} from "react-redux";
 import Spinner from "../components/UI/Spinner";
+import { Redirect } from "react-router-dom";
 
 class Auth extends Component {
   state = {
@@ -105,7 +106,7 @@ class Auth extends Component {
         />)
     )
 
-    const lastShot = error ? <h1 className='text-danger font-weight-bold'>{error}</h1> : (
+    const content = error ? <h1 className='text-danger font-weight-bold'>{error}</h1> : (
       loading ? <Spinner/> : <>
         <div className='d-flex flex-column align-items-center'>
           <div>
@@ -122,11 +123,12 @@ class Auth extends Component {
       </>
     )
 
-
+    let authRedirect = this.props.isAuthenticated ? <Redirect to='/'/> : null
 
     return (
         <div className='container d-flex align-items-center flex-column justify-content-around h-100'>
-          { lastShot }
+          { authRedirect }
+          { content }
         </div>
     )
   }
@@ -140,9 +142,9 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-  const {loading, error} = state.authReducer
+  const {loading, error, idToken} = state.authReducer
   return {
-    loading, error
+    loading, error, isAuthenticated: idToken !== null
   }
 }
 

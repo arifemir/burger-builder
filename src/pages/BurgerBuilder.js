@@ -51,6 +51,7 @@ class BurgerBuilder extends Component {
 						removeIngredient={this.props.removeIngredientP}
 						disabledInfo={disabledInfo}
 						price={totalPrice}
+            isAuthenticated={this.props.isAuthenticated}
 					/>
 				</Fragment>
 			)
@@ -88,12 +89,14 @@ const mapStateToProps = state => {
 		error,
 		loading
 	} = state.burgerBuilderReducer
+  const { idToken } = state.authReducer
 	return {
 		ingredients,
 		totalPrice,
 		purchasable,
 		error,
-		loading
+		loading,
+    isAuthenticated: idToken !== null
 	}
 }
 

@@ -4,7 +4,8 @@ import styles from './BuildControlPanel.module.css'
 import Control from './Control'
 import Price from './Price'
 import OrderButton from './OrderButton'
-
+import Button from "../../util/Button";
+import { withRouter } from 'react-router-dom'
 const controls = [
 	{ label: 'salad', type: 'salad' },
 	{ label: 'bacon', type: 'bacon' },
@@ -13,6 +14,11 @@ const controls = [
 ]
 
 const BuildControlPanel = props => {
+
+  const redirectToAuth = () => {
+    props.history.push('/auth');
+  }
+
 	return (
 		<div className={styles.BuildControls}>
 			<Price price={props.price} />
@@ -25,9 +31,12 @@ const BuildControlPanel = props => {
 					disabledInfo={props.disabledInfo[ctrl.type]}
 				/>
 			))}
-			<OrderButton orderButtonText={'ORDER NOW'} />
+      {props.isAuthenticated ?
+        <OrderButton orderButtonText={'ORDER NOW'} /> :
+        <Button sign onClick={redirectToAuth}>Login</Button>
+      }
 		</div>
 	)
 }
 
-export default BuildControlPanel
+export default withRouter(BuildControlPanel)

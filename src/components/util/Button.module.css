@@ -13,3 +13,17 @@
 .Danger {
 	color: #ff3400;
 }
+
+.sign {
+  background-color: rgba(119, 234, 76, 0.75);
+  outline:none;
+  cursor:pointer;
+  border:1px solid #455e30;
+  color: rgba(0, 0, 0, 0.9);
+  font-family: inherit;
+  font-size:1.2em;
+  padding:15px 30px;
+  margin:0 auto;
+  font-weight: bolder;
+  border-radius:5px;
+}
