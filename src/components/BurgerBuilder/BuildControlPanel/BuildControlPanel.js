@@ -1,11 +1,16 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+
 import styles from './BuildControlPanel.module.css'
 
 import Control from './Control'
 import Price from './Price'
 import OrderButton from './OrderButton'
 import Button from "../../util/Button";
-import { withRouter } from 'react-router-dom'
+
+import { connect } from "react-redux";
+import { authForOrder } from '../../../store/actions'
+
 const controls = [
 	{ label: 'salad', type: 'salad' },
 	{ label: 'bacon', type: 'bacon' },
@@ -16,7 +21,8 @@ const controls = [
 const BuildControlPanel = props => {
 
   const redirectToAuth = () => {
-    props.history.push('/auth');
+    props.history.push('/auth')
+    props.authOrder()
   }
 
 	return (
@@ -33,10 +39,16 @@ const BuildControlPanel = props => {
 			))}
       {props.isAuthenticated ?
         <OrderButton orderButtonText={'ORDER NOW'} /> :
-        <Button sign onClick={redirectToAuth}>Login</Button>
+        <Button sign onClick={redirectToAuth}>Login for order</Button>
       }
 		</div>
 	)
 }
 
-export default withRouter(BuildControlPanel)
+const mapDispatchToProps = dispatch => {
+	return {
+    authOrder: () => dispatch(authForOrder())
+	}
+}
+
+export default connect(null,mapDispatchToProps)(withRouter(BuildControlPanel))

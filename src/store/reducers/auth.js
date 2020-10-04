@@ -4,7 +4,8 @@ const initialState = {
   idToken: null,
   localId: null,
   error: null,
-  loading: false
+  loading: false,
+  isAuthForOrder: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -36,7 +37,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         idToken: null,
-        localId: null
+        localId: null,
+        isAuthForOrder: false
+      }
+    }
+    case actionTypes.AUTH_FOR_ORDER: {
+      return {
+        ...state,
+        isAuthForOrder: true
       }
     }
     default :

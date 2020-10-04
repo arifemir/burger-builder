@@ -1,4 +1,4 @@
-import {AUTH_SUCCESS, AUTH_FAIL, AUTH_START, AUTH_LOGOUT} from './actionTypes'
+import {AUTH_SUCCESS, AUTH_FAIL, AUTH_START, AUTH_LOGOUT, AUTH_FOR_ORDER} from './actionTypes'
 import axios from 'axios'
 
 export const authStart = () => {
@@ -59,5 +59,11 @@ export const auth = (email, password, isSignup) => {
         console.log(err.response.data.error)
         dispatch(authFail(err.response.data.error.message))
       })
+  }
+}
+
+export const authForOrder = () => {
+  return {
+    type: AUTH_FOR_ORDER
   }
 }

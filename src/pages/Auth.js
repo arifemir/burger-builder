@@ -123,7 +123,7 @@ class Auth extends Component {
       </>
     )
 
-    let authRedirect = this.props.isAuthenticated ? <Redirect to='/'/> : null
+    let authRedirect = this.props.isAuthenticated ?  <Redirect to={this.props.isAuthForOrder ? '/checkout' : '/'}/> : null
 
     return (
         <div className='container d-flex align-items-center flex-column justify-content-around h-100'>
@@ -142,9 +142,9 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-  const {loading, error, idToken} = state.authReducer
+  const {loading, error, idToken, isAuthForOrder} = state.authReducer
   return {
-    loading, error, isAuthenticated: idToken !== null
+    loading, error, isAuthenticated: idToken !== null, isAuthForOrder
   }
 }
 
