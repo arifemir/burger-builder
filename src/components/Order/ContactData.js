@@ -53,6 +53,7 @@ class ContactData extends Component {
 						placeholder='Your name'
 						onChange={this.handleInputChange}
 						value={name}
+            label={'name'}
 					/>
 					<Input
 						inputtype={'input'}
@@ -61,7 +62,8 @@ class ContactData extends Component {
 						placeholder='Your email'
 						onChange={this.handleInputChange}
 						value={email}
-					/>
+            label={'email'}
+          />
 					<Input
 						inputtype={'input'}
 						type='text'
@@ -69,7 +71,8 @@ class ContactData extends Component {
 						placeholder='Street'
 						onChange={this.handleInputChange}
 						value={street}
-					/>
+            label={'street'}
+          />
 					<Input
 						inputtype={'input'}
 						type='text'
@@ -77,7 +80,8 @@ class ContactData extends Component {
 						placeholder='Postal Code'
 						onChange={this.handleInputChange}
 						value={postal}
-					/>
+            label={'postal'}
+          />
 					<Button type='success' onClick={this.orderHandler}>
 						Order
 					</Button>
