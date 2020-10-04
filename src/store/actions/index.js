@@ -8,4 +8,4 @@ export { orderNowOpen, orderNowClose } from './modal'
 
 export { purchaseBurgerStart, purchaseInit, fetchOrderStart } from './order'
 
-export { auth, logout, authForOrder } from './auth'
+export { auth, logout, authForOrder, authCheckStore } from './auth'

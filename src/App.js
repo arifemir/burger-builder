@@ -1,7 +1,7 @@
 import React from 'react'
 import Fragment from './components/hoc/Fragment'
 
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import BurgerBuilder from './pages/BurgerBuilder'
 import Checkout from './pages/Checkout'
@@ -10,8 +10,16 @@ import Layout from './components/Layout/Layout'
 import Auth from "./pages/Auth";
 import Logout from "./pages/Logout";
 
+import { authCheckStore } from "./store/actions";
+import {connect} from "react-redux";
+
 class App extends React.Component {
-	render() {
+
+  componentDidMount() {
+    this.props.onTryAutoLoginWithLocalStorage()
+  }
+
+  render() {
 		return (
 			<Fragment>
 				<Layout>
@@ -29,4 +37,10 @@ class App extends React.Component {
 	}
 }
 
-export default App
+const mapDispatchToProps = dispatch => {
+	return {
+    onTryAutoLoginWithLocalStorage: () => dispatch(authCheckStore())
+	}
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App))

@@ -5,7 +5,6 @@ import {
 	SET_INGREDIENTS,
 	FETCH_INGREDIENTS_FAILED,
 	SET_TOTAL_PRICE,
-  AUTH_FOR_ORDER
 } from './actionTypes'
 
 export const addIngredient = ingredientName => {
