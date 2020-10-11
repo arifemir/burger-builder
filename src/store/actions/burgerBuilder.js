@@ -4,7 +4,7 @@ import {
 	REMOVE_INGREDIENTS,
 	SET_INGREDIENTS,
 	FETCH_INGREDIENTS_FAILED,
-	SET_TOTAL_PRICE
+	SET_TOTAL_PRICE,
 } from './actionTypes'
 
 export const addIngredient = ingredientName => {
@@ -68,3 +68,4 @@ export const initTotalPrice = () => {
 			})
 	}
 }
+

@@ -11,7 +11,8 @@ const initialState = {
 	ingredients: null,
 	totalPrice: 0,
 	purchasable: false,
-	error: null
+	error: null,
+  building: false
 }
 
 const updatePurchaseState = updatedIngredients => {
@@ -31,7 +32,7 @@ const reducer = (state = initialState, action) => {
 			newState.totalPrice =
 				state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
 			newState.purchasable = updatePurchaseState(newState.ingredients)
-
+      newState.building = true
 			return newState
 		}
 		case actionTypes.REMOVE_INGREDIENTS: {
@@ -43,12 +44,13 @@ const reducer = (state = initialState, action) => {
 			newState.totalPrice =
 				totalPrice - INGREDIENT_PRICES[action.ingredientName]
 			newState.purchasable = updatePurchaseState(newState.ingredients)
-			return newState
+      newState.building = true
+      return newState
 		}
 		case actionTypes.SET_INGREDIENTS: {
 			return {
 				...state,
-				ingredients: action.ingredients,
+				ingredients: state.building ? state.ingredients : action.ingredients,
 				purchasable: updatePurchaseState(action.ingredients),
 				error: false
 			}
@@ -56,7 +58,7 @@ const reducer = (state = initialState, action) => {
 		case actionTypes.SET_TOTAL_PRICE: {
 			return {
 				...state,
-				totalPrice: action.totalPrice,
+				totalPrice: state.building ? state.totalPrice : action.totalPrice,
 				error: false
 			}
 		}
