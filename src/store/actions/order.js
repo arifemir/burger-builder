@@ -62,11 +62,11 @@ export const fetchOrdersBeforeStart = () => {
 	}
 }
 
-export const fetchOrderStart = (token) => {
+export const fetchOrderStart = (token, localId) => {
 	return dispatch => {
 		dispatch(fetchOrdersBeforeStart())
 		axios
-			.get('/orders.json?auth=' + token)
+			.get('/orders.json?auth=' + token + '&orderBy="localId"&equalTo="' + localId + '"')
 			.then(res => {
 				const fetchedOrders = []
 				for (let key in res.data) {

@@ -18,10 +18,11 @@ class ContactData extends Component {
 	}
 
 	orderHandler = e => {
-		const { ingredients, totalPrice, idToken } = this.props
+		const { ingredients, totalPrice, idToken, localId } = this.props
 		const { name, street, postal, email } = this.state
 		e.preventDefault()
 		const order = {
+      localId,
 			ingredients,
 			totalPrice,
 			name,
@@ -47,7 +48,7 @@ class ContactData extends Component {
 				<h4>Enter your Contact Data</h4>
 				<form>
 					<Input
-						inputtype={'input'}
+            elementType={'input'}
 						type='text'
 						name='name'
 						placeholder='Your name'
@@ -56,7 +57,7 @@ class ContactData extends Component {
             label={'name'}
 					/>
 					<Input
-						inputtype={'input'}
+            elementType={'input'}
 						type='text'
 						name='email'
 						placeholder='Your email'
@@ -65,7 +66,7 @@ class ContactData extends Component {
             label={'email'}
           />
 					<Input
-						inputtype={'input'}
+            elementType={'input'}
 						type='text'
 						name='street'
 						placeholder='Street'
@@ -74,7 +75,7 @@ class ContactData extends Component {
             label={'street'}
           />
 					<Input
-						inputtype={'input'}
+            elementType={'input'}
 						type='text'
 						name='postal'
 						placeholder='Postal Code'
@@ -94,8 +95,8 @@ class ContactData extends Component {
 const mapStateToProps = state => {
 	const { ingredients, totalPrice } = state.burgerBuilderReducer
 	const { loading } = state.orderReducer
-  const { idToken } = state.authReducer
-	return { ingredients, totalPrice, loading, idToken }
+  const { idToken, localId } = state.authReducer
+	return { ingredients, totalPrice, loading, idToken, localId }
 }
 
 const mapDispatchToProps = dispatch => {

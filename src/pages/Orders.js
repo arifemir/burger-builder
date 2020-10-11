@@ -5,7 +5,7 @@ import Order from '../components/Order/Order'
 import Spinner from '../components/UI/Spinner'
 class Orders extends Component {
 	componentDidMount() {
-		this.props.initOrders(this.props.idToken)
+		this.props.initOrders(this.props.idToken, this.props.localId)
 	}
 	render() {
 		return (
@@ -21,17 +21,18 @@ class Orders extends Component {
 
 const mapStateToProps = state => {
 	const { loading, orders } = state.orderReducer
-  const { idToken } = state.authReducer
+  const { idToken, localId} = state.authReducer
 	return {
 		loading,
 		orders,
-    idToken
+    idToken,
+    localId
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		initOrders: (token) => dispatch(fetchOrderStart(token))
+		initOrders: (token, localId) => dispatch(fetchOrderStart(token, localId))
 	}
 }
 
