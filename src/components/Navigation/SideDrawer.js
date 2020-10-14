@@ -15,7 +15,7 @@ const SideDrawer = props => {
 	return (
 		<Fragment>
 			<BackDrop show={props.sideDrawerShowState} clicked={props.toggle} />
-			<div className={cn(styles.SideDrawer, sideDrawerShowStyle)}>
+			<div className={cn(styles.SideDrawer, sideDrawerShowStyle)} onClick={props.toggle} >
 				<DrawerToggle click={props.toggle} height='9%' />
 				<nav>
 					<NavigationItems isAuthenticated={props.isAuth} />

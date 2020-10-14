@@ -102,7 +102,7 @@ class Auth extends Component {
           invalid={!element.config.valid}
           shouldValidate={element.config.validation}
           touched={element.config.touched}
-          changed={(event) => this.inputChageHandler(event)}
+          onChange={(event) => this.inputChageHandler(event)}
         />)
     )
 
