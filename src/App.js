@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
+
 import Fragment from './components/hoc/Fragment'
+import Layout from './components/Layout/Layout'
 
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
-import BurgerBuilder from './pages/BurgerBuilder'
-import Checkout from './pages/Checkout'
-import Orders from './pages/Orders'
-import Layout from './components/Layout/Layout'
-import Auth from "./pages/Auth";
-import Logout from "./pages/Logout";
-
 import { authCheckStore } from "./store/actions";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import Spinner from './components/UI/Spinner';
+
+const BurgerBuilder = lazy(() => import('./pages/BurgerBuilder'))
+const Checkout = lazy(() => import('./pages/Checkout'))
+const Orders = lazy(() => import('./pages/Orders'))
+const Auth = lazy(() => import('./pages/Auth'))
+const Logout = lazy(() => import('./pages/Logout'))
+
+
+
 
 class App extends React.Component {
 
@@ -41,12 +46,14 @@ class App extends React.Component {
       );
     }
 
-		return (
-			<Fragment>
-				<Layout>
-          {routes}
-        </Layout>
-			</Fragment>
+    return (
+      <Suspense fallback={<Spinner/>}>
+			  <Fragment>
+			  	<Layout>
+            {routes}
+          </Layout>
+        </Fragment>
+      </Suspense>
 		)
 	}
 }
