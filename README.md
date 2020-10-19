@@ -21,3 +21,11 @@
 - webpack
 - testing(jest, enzyme)
 - firebase
+
+## Project explanation
+
+- sign-up or sign-in, build your own burger order it and look your past orders
+
+## Link
+
+- [Burger Builder](https://burger-67864.web.app/)
