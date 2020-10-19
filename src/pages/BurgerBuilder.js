@@ -18,7 +18,7 @@ import OrderSummary from '../components/BurgerBuilder/OrderSummary/OrderSummary'
 import Spinner from '../components/UI/Spinner'
 import ErrorHandler from '../components/hoc/ErrorHandler'
 import Burger from '../components/BurgerBuilder/Burger/Burger'
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
 	componentDidMount() {
 		this.props.initTotalPrice()
 		this.props.initIngr()
