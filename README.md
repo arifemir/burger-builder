@@ -1,8 +1,23 @@
-<h1> inspired by Academymind Maximilian Schwarzmüller react course but i did so many changes </h1>
-<ul>
-  <li>styling improvement</li>
-  <li>folder structure changes</li>
-  <li>added extra components</li>
-  <li>added own redux logic</li>
-  <li>added own more logics</li>
-</ul>
+## inspired by Academymind Maximilian Schwarzmüller react course but i did so many changes
+
+- styling improvement
+- folder structure change
+- added extra components
+- added extra tests
+- added own redux logic
+- added own more logics
+
+## What i learned ?
+
+- base react
+- styling react
+- components(styled components, module css)
+- debugging react apps
+- react-transition-group
+- routing(react-dom)
+- state management(redux, redux-thunk, redux-saga, context api , hooks)
+- deploying
+- next.js
+- webpack
+- testing(jest, enzyme)
+- firebase
