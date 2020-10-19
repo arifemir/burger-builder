@@ -15,7 +15,7 @@ const initialState = {
   building: false
 }
 
-const updatePurchaseState = updatedIngredients => {
+export const updatePurchaseState = updatedIngredients => {
 	const sum = Object.values(updatedIngredients).reduce((x, y) => x + y, 0)
 	return sum > 0
 }
