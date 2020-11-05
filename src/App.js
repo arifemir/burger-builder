@@ -2,21 +2,18 @@ import React, { lazy, Suspense } from 'react'
 
 import Fragment from './components/hoc/Fragment'
 import Layout from './components/Layout/Layout'
+import Spinner from './components/UI/Spinner';
 
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import { authCheckStore } from "./store/actions";
 import { connect } from "react-redux";
-import Spinner from './components/UI/Spinner';
 
 const BurgerBuilder = lazy(() => import('./pages/BurgerBuilder'))
 const Checkout = lazy(() => import('./pages/Checkout'))
 const Orders = lazy(() => import('./pages/Orders'))
 const Auth = lazy(() => import('./pages/Auth'))
 const Logout = lazy(() => import('./pages/Logout'))
-
-
-
 
 class App extends React.Component {
 

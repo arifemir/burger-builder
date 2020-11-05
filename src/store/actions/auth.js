@@ -1,4 +1,4 @@
-import {AUTH_SUCCESS, AUTH_FAIL, AUTH_START, AUTH_LOGOUT, AUTH_FOR_ORDER} from './actionTypes'
+import {AUTH_SUCCESS, AUTH_FAIL, AUTH_START, AUTH_LOGOUT, AUTH_FOR_ORDER, AUTH_INIT_LOGOUT} from './actionTypes'
 import axios from 'axios'
 
 export const authStart = () => {
@@ -23,11 +23,11 @@ export const authFail = (error) => {
 }
 
 export const logout = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('expirationDate');
-  localStorage.removeItem('localId');
+  // localStorage.removeItem('token');
+  // localStorage.removeItem('expirationDate');
+  // localStorage.removeItem('localId');
   return {
-    type: AUTH_LOGOUT
+    type: AUTH_INIT_LOGOUT
   }
 }
 
