@@ -11,7 +11,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import reducers from './store/reducers/reducers'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga';
-import {watchAuth} from './store/sagas';
+import {watchAuth, watchBurgerBuilder, watchOrder} from './store/sagas';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const sagaMiddleware = createSagaMiddleware()
@@ -19,6 +19,8 @@ const sagaMiddleware = createSagaMiddleware()
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)))
 
 sagaMiddleware.run(watchAuth)
+sagaMiddleware.run(watchBurgerBuilder)
+sagaMiddleware.run(watchOrder)
 
 ReactDOM.render(
 	<Provider store={store}>

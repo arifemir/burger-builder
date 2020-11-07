@@ -1,81 +1,11 @@
-import * as actionTypes from './actionTypes'
-import axios from '../../axiosOrders'
+import {INIT_FETCH_ORDERS, FETCH_ORDERS_BEFORE_START, FETCH_ORDERS_SUCCESS, PURCHASE_BURGER_SUCCESS, PURCHASE_BURGER_FAIL, PURCHASE_BURGER_BEFORE_START, INIT_PURCHASE_BURGER, PURCHASE_INIT, FETCH_ORDERS_FAIL} from './actionTypes'
 
-export const purchaseBurgerSuccess = (id, orderData) => {
-	return {
-		type: actionTypes.PURCHASE_BURGER_SUCCESS,
-		orderId: id,
-		orderData
-	}
-}
-
-export const purchaseBurgerFail = error => {
-	return {
-		type: actionTypes.PURCHASE_BURGER_FAIL,
-		error
-	}
-}
-
-export const purchaseBurgerBeforeStart = () => {
-	return {
-		type: actionTypes.PURCHASE_BURGER_BEFORE_START
-	}
-}
-
-export const purchaseBurgerStart = (orderData, token) => {
-	return dispatch => {
-		dispatch(purchaseBurgerBeforeStart())
-		axios
-			.post('/orders.json?auth=' + token, orderData)
-			.then(res => {
-				dispatch(purchaseBurgerSuccess(res.data.name, orderData))
-			})
-			.catch(err => {
-				dispatch(purchaseBurgerFail(err.message))
-			})
-	}
-}
-
-export const purchaseInit = () => {
-	return {
-		type: actionTypes.PURCHASE_INIT
-	}
-}
-
-export const fetchOrdersSuccess = orders => {
-	return {
-		type: actionTypes.FETCH_ORDERS_SUCCESS,
-		orders: orders
-	}
-}
-
-export const fetchOrdersFail = error => {
-	return {
-		type: actionTypes.FETCH_ORDERS_FAIL,
-		error
-	}
-}
-
-export const fetchOrdersBeforeStart = () => {
-	return {
-		type: actionTypes.FETCH_ORDERS_BEFORE_START
-	}
-}
-
-export const fetchOrderStart = (token, localId) => {
-	return dispatch => {
-		dispatch(fetchOrdersBeforeStart())
-		axios
-			.get('/orders.json?auth=' + token + '&orderBy="localId"&equalTo="' + localId + '"')
-			.then(res => {
-				const fetchedOrders = []
-				for (let key in res.data) {
-					fetchedOrders.push(res.data[key])
-				}
-				dispatch(fetchOrdersSuccess(fetchedOrders))
-			})
-			.catch(err => {
-				dispatch(fetchOrdersFail(err.name))
-			})
-	}
-}
+export const purchaseBurgerSuccess = (id, orderData) => Object({ type: PURCHASE_BURGER_SUCCESS, orderId: id, orderData })
+export const purchaseBurgerFail = error => Object({ type: PURCHASE_BURGER_FAIL, error })
+export const purchaseBurgerBeforeStart = () => Object({ type: PURCHASE_BURGER_BEFORE_START })
+export const purchaseBurgerStart = (orderData, token) => Object({ type: INIT_PURCHASE_BURGER, orderData, token })
+export const purchaseInit = () => Object({ type: PURCHASE_INIT })
+export const fetchOrdersSuccess = orders => Object({ type: FETCH_ORDERS_SUCCESS, orders: orders })
+export const fetchOrdersFail = error => Object({ type: FETCH_ORDERS_FAIL, error })
+export const fetchOrdersBeforeStart = () => Object({ type: FETCH_ORDERS_BEFORE_START })
+export const fetchOrderStart = (token, localId) => Object({ type: INIT_FETCH_ORDERS, token, localId })
