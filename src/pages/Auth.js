@@ -106,27 +106,27 @@ class Auth extends Component {
         />)
     )
 
-    const content = error ? <h1 className='text-danger font-weight-bold'>{error}</h1> : (
+    const content = error ? <h1 style={{fontSize: 14, color: 'red'}}>{error}</h1> : (
       loading ? <Spinner/> : <>
-        <div className='d-flex flex-column align-items-center'>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100vw'}}>
           <div>
-            <h1 className='text-primary'>{!this.state.isSignup ? 'Sign-In' : 'Sign-Up'}</h1>
+            <h1 style={{color: '#505050'}}>{!this.state.isSignup ? 'Login' : 'Register'}</h1>
           </div>
-          <div className='w-100'>
+          <div style={{width: '80%', maxWidth: '600px', minWidth: '200px'}}>
             {form}
-            <form onSubmit={this.formSubmitHandler} className='d-flex align-items-center justify-content-center'>
-              <Button btnType="Success">SUBMIT</Button>
+            <form onSubmit={this.formSubmitHandler} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <Button btnType="Success">Submit</Button>
             </form>
           </div>
         </div>
-        <Button onClick={this.switchAuthModeHandler} type="danger">SWITCH TO {!this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
+        <Button onClick={this.switchAuthModeHandler} type="danger">Switch To {!this.state.isSignup ? 'Register' : 'Login'}</Button>
       </>
     )
 
     let authRedirect = this.props.isAuthenticated ?  <Redirect to={this.props.isAuthForOrder ? '/checkout' : '/'}/> : null
 
     return (
-        <div className='container d-flex align-items-center flex-column justify-content-around h-100'>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', height: '100vh', margin: '16px 32px'}}>
           { authRedirect }
           { content }
         </div>

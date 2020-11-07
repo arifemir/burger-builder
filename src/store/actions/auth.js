@@ -1,4 +1,4 @@
-import {AUTH_SUCCESS, AUTH_FAIL, AUTH_START, AUTH_LOGOUT, AUTH_FOR_ORDER, AUTH_INIT_LOGOUT} from './actionTypes'
+import {AUTH_SUCCESS, AUTH_FAIL, AUTH_START, AUTH_LOGOUT, AUTH_FOR_ORDER, AUTH_INIT_LOGOUT, AUTH_CHECK_TIMEOUT} from './actionTypes'
 import axios from 'axios'
 
 export const authStart = () => {
@@ -23,21 +23,15 @@ export const authFail = (error) => {
 }
 
 export const logout = () => {
-  // localStorage.removeItem('token');
-  // localStorage.removeItem('expirationDate');
-  // localStorage.removeItem('localId');
-  return {
-    type: AUTH_INIT_LOGOUT
-  }
+  return {type: AUTH_INIT_LOGOUT}
+}
+
+export const logoutSucceed = () => {
+  return {type: AUTH_LOGOUT}
 }
 
 export const checkAuthTimeout = (expiresIn) => {
-  return dispatch => {
-    setTimeout(() => {
-      console.log('expireIn force logout')
-      dispatch(logout())
-    }, expiresIn * 1000)
-  }
+  return {type: AUTH_CHECK_TIMEOUT, expiresIn}
 }
 
 export const auth = (email, password, isSignup) => {
