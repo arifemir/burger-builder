@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
         loading: false
       }
     }
-    case actionTypes.AUTH_LOGOUT : {
+    case actionTypes.AUTH_LOGOUT: {
       return {
         ...state,
         idToken: null,
